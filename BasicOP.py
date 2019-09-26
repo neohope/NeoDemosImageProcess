@@ -30,7 +30,7 @@ def rotate(img):
 
 
 # 翻转
-def flp(img):
+def flip(img):
     img_RGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     img1 = cv2.flip(img_RGB, 0)
     img2 = cv2.flip(img_RGB, 1)
@@ -52,7 +52,7 @@ def flp(img):
 #平移
 #[1 0 tx]
 #[0 1 ty]
-def move(img):
+def shift(img):
     img_RGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     rows, cols, chanels = img_RGB.shape
 

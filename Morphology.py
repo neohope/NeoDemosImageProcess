@@ -6,6 +6,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
+#腐蚀
 def erosion(img):
     kernel = np.ones((3,3), np.uint8)
     erosion = cv2.erode(img, kernel, iterations=2)
@@ -15,6 +16,7 @@ def erosion(img):
     cv2.destroyAllWindows()
 
 
+#膨胀
 def expansion(img):
     kernel = np.ones((3,3), np.uint8)
     expansion = cv2.dilate(img, kernel, iterations=2)

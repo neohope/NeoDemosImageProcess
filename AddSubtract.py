@@ -13,12 +13,14 @@ def add(img1,img2):
     cv2.waitKey(0)
 
 
+#融合
 def addWeighted(img1, alpha, img2, beta, gamma):
     result  = cv2.addWeighted(img1,alpha,img2,beta,gamma)
     cv2.imshow("addWeighted", result)
     cv2.waitKey(0)
 
 
+#减法
 def subtract(img1, img2):
     result = cv2.subtract(img1, img2)
     cv2.imshow("subtract", result)

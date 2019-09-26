@@ -19,6 +19,9 @@ def subtract(img01, img11, alpha, beta):
 
 
 # black vessel
+# TODO:
+# 根据剪影后的结果，得到最大和最小像素值
+# 根据最大最小像素值，动态调整对比度
 def subtract1(img01, img11, alpha, beta):
     subtract1 = cv2.subtract(img01, img11)
     #cv2.imshow("01-11", subtract)
