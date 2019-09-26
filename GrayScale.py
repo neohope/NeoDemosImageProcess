@@ -57,8 +57,43 @@ def gray_weight_avg(img):
     cv2.destroyAllWindows()
 
 
+def gray_process(img):
+    grayImage = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    rows, cols = grayImage.shape
+    
+    #"灰度上移"
+    blank1 = np.zeros([rows, cols], grayImage.dtype)
+    cv2.convertScaleAbs(grayImage,blank1,1,50)
+
+    #对比度增强
+    blank2 = np.zeros([rows, cols], grayImage.dtype)
+    cv2.convertScaleAbs(grayImage,blank2,1.5,0)
+
+    #对比度减弱
+    blank3 = np.zeros([rows, cols], grayImage.dtype)
+    cv2.convertScaleAbs(grayImage,blank3,0.5,0)
+
+    #反色
+    blank4 = np.zeros([rows, cols], grayImage.dtype)
+    blank4[:,:] = 255
+    blank4 = cv2.subtract(blank4, grayImage)
+
+    images = [grayImage, blank1, blank2, blank3, blank4]
+    titles = ['grayImage', 'blank1', 'blank2', 'blank3', 'blank4']
+    for i in range(5):
+        plt.subplot(2, 3, i + 1), plt.imshow(images[i], 'gray')
+        plt.title(titles[i])
+        plt.xticks([]), plt.yticks([])
+    plt.show()
+
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+
+
+
 if __name__ == '__main__':
     img = cv2.imread("images/Forest_500X280.jpg")
-    gray_max(img)
-    gray_avg(img)
-    gray_weight_avg(img)
+    #gray_max(img)
+    #gray_avg(img)
+    #gray_weight_avg(img)
+    gray_process(img)
