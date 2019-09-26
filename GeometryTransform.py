@@ -114,6 +114,6 @@ if __name__ == '__main__':
     #zoom(img)
     #rotate(img)
     #flp(img)
-    #move(img)
+    #shift(img)
     #affineTransform(img)
     perspectiveTransform(img)

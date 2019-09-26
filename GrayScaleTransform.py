@@ -26,6 +26,25 @@ def liner_transform(img):
     cv2.destroyAllWindows()
 
 
+# 非线性变换
+def nonliner_transform(img):
+    grayImage = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    
+    height,width = grayImage.shape
+    result = np.zeros((height, width), np.uint8)
+
+    #图像灰度非线性变换：DB=DA×DA/255
+    for i in range(height):
+        for j in range(width):
+            gray = int(grayImage[i,j])*int(grayImage[i,j]) / 255
+            result[i,j] = np.uint8(gray)
+
+    cv2.imshow("Gray Image", grayImage)
+    cv2.imshow("Result", result)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+
+
 #绘制对数曲线
 def log_plot(c):
     x = np.arange(0, 256, 0.01)
@@ -96,5 +115,6 @@ def gamma_transform(img):
 if __name__ == '__main__':
     img = cv2.imread("images/Forest_500X280.jpg")
     liner_transform(img)
+    nonliner_transform(img)
     log_transform(img)
     gamma_transform(img)
