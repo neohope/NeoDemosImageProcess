@@ -67,7 +67,7 @@ def adjustPhone(img, height, width):
     rows, cols = img.shape[:2]
 
     #将源图像高斯模糊
-    img_gaus = cv2.GaussianBlur(img, (3,3), 0)
+    img_gaus = cv2.GaussianBlur(img, (5,5), 0)
     
     #进行灰度化处理
     gray = cv2.cvtColor(img_gaus,cv2.COLOR_BGR2GRAY)
@@ -119,14 +119,13 @@ def adjustPhone(img, height, width):
     cv2.destroyAllWindows()
 
 
-
 if __name__ == '__main__':
-    img = cv2.imread("images/Paper_297X511.png")
-    adjust(img, 272, 190)
+    #img = cv2.imread("images/Paper_297X511.png")
+    #adjust(img, 272, 190)
 
     img = cv2.imread("images/Phone1_400X533.jpg")
     adjustPhone(img, 250, 130)
     
     # need adjust
-    #img = cv2.imread("images/Phone_400X533.jpg")
-    #adjustPhone(img, 250, 130)
+    img = cv2.imread("images/Phone_400X533.jpg")
+    adjustPhone(img, 250, 130)
